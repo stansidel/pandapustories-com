@@ -14,8 +14,8 @@
   <meta property="og:title" content="{{ $title }}">
   <meta property="og:description" content="{{ $description }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  {{- /* Link-preview picture: this page's cover, else content/images/og-image.* */}}
-  {{- with or (.Resources.GetMatch "cover.*") (site.Home.Resources.GetMatch "images/og-image.*") }}
+  {{- /* Link-preview picture: this page's og-image.*, else its cover.*, else content/images/og-image.* */}}
+  {{- with or (.Resources.GetMatch "og-image.*") (.Resources.GetMatch "cover.*") (site.Home.Resources.GetMatch "images/og-image.*") }}
   <meta property="og:image" content="{{ .Permalink }}">
   <meta name="twitter:card" content="summary_large_image">
   {{- end }}
