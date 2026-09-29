@@ -37,6 +37,11 @@ hugo server
 Open <http://localhost:1313>. The page reloads as you save files. Press
 Ctrl+C to stop.
 
+In VS Code you can also press **F5** (Run site), which starts the server and
+opens the site in Chrome, or **Cmd/Ctrl+Shift+B** to start the server only.
+To build the finished site into `public/` as GitHub does, run
+`hugo build --gc --minify` (or the **Hugo: build** task).
+
 ## 3. Add a new book
 
 1. Copy `content/books/panda-pu-learns-to-draw.md` to a new file, e.g.
