@@ -2,8 +2,8 @@
 title: "Panda Pu Learns to Draw"
 subtitle: "Part One: Finding the Artist"
 
-# The cover image lives in assets/. Until the file exists, a placeholder is shown.
-cover: "images/covers/panda-pu-learns-to-draw.jpg"
+# Cover: put an image named cover.jpg (or .png/.webp) in this folder.
+# Until it exists, a placeholder is shown.
 
 # TODO: replace with a one or two sentence description of the book.
 # It is shown in book lists and used for search engines and link previews.

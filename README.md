@@ -7,18 +7,20 @@ no build tools beyond Hugo. Almost everything you will want to change is in
 Markdown files in `content/`.
 
 ```
-content/               ← the words (edit these)
+content/               ← words and pictures (edit these)
   _index.md              home page
-  about.md               About page
+  images/                site-wide images: logo, link preview, decorations
+  about/
+    index.md             About page
   books/
     _index.md            Books page intro
-    panda-pu-learns-to-draw.md   one file per book
-assets/
-  css/main.css           all styles (colours and fonts at the top)
-  images/                logo, covers, decorations (see assets/images/README.md)
-static/                  files copied as-is (favicon)
+    panda-pu-learns-to-draw/   one folder per book
+      index.md             the book's details and text
+      cover.jpg            its cover (add when ready)
+assets/css/main.css      all styles (colours and fonts at the top)
+static/                  site icons, copied as-is
 layouts/                 HTML templates (rarely need touching)
-hugo.toml                site settings: domain, title, image paths
+hugo.toml                site settings: domain, title, description
 .github/workflows/hugo.yaml   automatic deployment
 ```
 
@@ -44,22 +46,35 @@ To build the finished site into `public/` as GitHub does, run
 
 ## 3. Add a new book
 
-1. Copy `content/books/panda-pu-learns-to-draw.md` to a new file, e.g.
-   `content/books/panda-pu-goes-outside.md`. The file name becomes the web
-   address (`/books/panda-pu-goes-outside/`).
-2. Edit the front matter at the top: `title`, `subtitle`, `cover`,
-   `description`, `status`, `releaseDate`, `weight` (order in the list), and
-   `buy` links.
+1. Copy the folder `content/books/panda-pu-learns-to-draw/` and rename the
+   copy, e.g. `content/books/panda-pu-goes-outside/`. The folder name becomes
+   the web address (`/books/panda-pu-goes-outside/`).
+2. In the new folder's `index.md`, edit the front matter at the top: `title`,
+   `subtitle`, `description`, `status`, `releaseDate`, `weight` (order in the
+   list), and `buy` links.
 3. Write about the book below the second `---`.
-4. To show it on the home page instead of the current book, set
+4. Put the cover in the same folder as `cover.jpg` (or `cover.png` /
+   `cover.webp`), about 1000 px wide.
+5. To show it on the home page instead of the current book, set
    `featured: true` on it and `featured: false` on the old one.
 
 ## 4. Replace images
 
-Put image files in `assets/images/` using the names listed in
-[assets/images/README.md](assets/images/README.md): `logo.png`,
-`og-image.jpg`, `covers/<book>.jpg` and optional `decorations/…`. Until a file
-exists, the site shows text or a paper-coloured placeholder, so nothing breaks.
+Images sit next to the page that uses them and are found by their name. Any
+extension works (`.jpg`, `.png`, `.webp`). Until a file exists, the site shows
+text or a paper-coloured placeholder, so nothing breaks.
+
+| File | Used for | Suggested size |
+|---|---|---|
+| `content/books/<book>/cover.jpg` | That book's cover, also its link-preview picture | about 1000 px wide |
+| `content/images/logo.png` | "Panda Pu" title artwork on the home page | about 1200 px wide |
+| `content/images/og-image.jpg` | Picture for link previews on every other page | 1200 × 630 px |
+| `content/images/coming-soon.png` | Optional drawing above "More stories are coming" | about 400 px wide |
+| `content/images/footer.png` | Optional drawing above the footer | about 300 px wide |
+
+Any page can have its own images: turn `page.md` into a folder `page/` with
+an `index.md`, put the images beside it, and use them in the text as
+`![Description](picture.jpg)`.
 
 The site icons are in `static/`. `favicon.ico` is the browser-tab icon, a
 close crop of the panda's head at 16, 32 and 48 px. `apple-touch-icon.png`

@@ -6,8 +6,12 @@ description: "Panda Pu is a series of gentle stories for young children about cu
 
 featuredHeading: "The first book"
 comingSoon: "**More stories are coming.** New Panda Pu books will appear here as they are ready."
-# Optional small drawing shown beside the message above (a file in assets/).
-comingSoonIllustration: "images/decorations/coming-soon.png"
+
+# Site-wide images go in content/images/ (see README). All are optional:
+#   logo.*         title artwork at the top of this page
+#   og-image.*     default picture for link previews (1200×630)
+#   coming-soon.*  small drawing above "More stories are coming"
+#   footer.*       small drawing above the footer on every page
 
 menus:
   main:

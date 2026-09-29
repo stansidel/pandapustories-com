@@ -14,7 +14,8 @@
   <meta property="og:title" content="{{ $title }}">
   <meta property="og:description" content="{{ $description }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  {{- with or (resources.Get .Params.cover) (resources.Get site.Params.ogImage) }}
+  {{- /* Link-preview picture: this page's cover, else content/images/og-image.* */}}
+  {{- with or (.Resources.GetMatch "cover.*") (site.Home.Resources.GetMatch "images/og-image.*") }}
   <meta property="og:image" content="{{ .Permalink }}">
   <meta name="twitter:card" content="summary_large_image">
   {{- end }}
@@ -46,7 +47,7 @@
   </main>
 
   <footer class="site-footer">
-    {{- with resources.Get site.Params.footerIllustration }}
+    {{- with site.Home.Resources.GetMatch "images/footer.*" }}
     <img class="footer-illustration" src="{{ .RelPermalink }}" alt="" width="{{ .Width }}" height="{{ .Height }}">
     {{- else }}
     <div class="divider" aria-hidden="true"></div>

@@ -1,5 +1,5 @@
-{{- /* A book's cover image, or a paper-coloured placeholder until the image file exists. */ -}}
-{{- with resources.Get .Params.cover }}
+{{- /* The cover.* image in a book's folder, or a paper-coloured placeholder until it exists. */ -}}
+{{- with .Resources.GetMatch "cover.*" }}
 <img class="cover" src="{{ .RelPermalink }}" alt="Cover of {{ $.Title }}" width="{{ .Width }}" height="{{ .Height }}">
 {{- else }}
 <div class="cover cover-placeholder" role="img" aria-label="Cover of {{ .Title }} (image coming soon)">

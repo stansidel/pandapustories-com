@@ -1,6 +1,6 @@
 {{ define "main" }}
 <section class="intro">
-  {{- with resources.Get site.Params.logo }}
+  {{- with .Resources.GetMatch "images/logo.*" }}
   <h1 class="title-art"><img src="{{ .RelPermalink }}" alt="{{ site.Title }}" width="{{ .Width }}" height="{{ .Height }}"></h1>
   {{- else }}
   <h1 class="title">{{ site.Title }}</h1>
@@ -22,7 +22,7 @@
 {{- end }}
 
 <section class="coming">
-  {{- with resources.Get .Params.comingSoonIllustration }}
+  {{- with .Resources.GetMatch "images/coming-soon.*" }}
   <img class="illustration" src="{{ .RelPermalink }}" alt="" width="{{ .Width }}" height="{{ .Height }}">
   {{- else }}
   <div class="divider" aria-hidden="true"></div>

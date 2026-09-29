@@ -13,12 +13,6 @@ enableRobotsTXT = true
   # Default description for search engines and link previews.
   description = "Panda Pu is a series of gentle stories for young children about curiosity, friendship, learning and discovering the world."
 
-  # Optional images. Paths are inside assets/. If a file doesn't exist,
-  # the site simply uses text or a paper-coloured placeholder instead.
-  logo = "images/logo.png"                               # title artwork on the home page
-  ogImage = "images/og-image.jpg"                        # default picture for link previews (1200×630)
-  footerIllustration = "images/decorations/footer.png"   # small drawing above the footer
-
 # Recommended by Hugo for GitHub Pages builds.
 [caches.images]
   dir = ":cacheDir/images"
