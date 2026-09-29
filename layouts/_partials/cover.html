@@ -1,11 +1,14 @@
 {{- /* The cover.* image in a book's folder, or a paper-coloured placeholder until it exists. */ -}}
 {{- with .Resources.GetMatch "cover.*" }}
-<img class="cover" src="{{ .RelPermalink }}" alt="Cover of {{ $.Title }}" width="{{ .Width }}" height="{{ .Height }}">
+<img class="cover" src="{{ .RelPermalink }}" alt="Cover of {{ $.Title }}{{ with $.Params.formatLabel }}, {{ . }}{{ end }}" width="{{ .Width }}" height="{{ .Height }}">
 {{- else }}
-<div class="cover cover-placeholder" role="img" aria-label="Cover of {{ .Title }} (image coming soon)">
+<div class="cover cover-placeholder" role="img" aria-label="Cover of {{ .Title }}{{ with .Params.formatLabel }}, {{ . }}{{ end }} (image coming soon)">
   <span class="cover-placeholder-title">{{ .Title }}</span>
   {{- with .Params.subtitle }}
   <span class="cover-placeholder-subtitle">{{ . }}</span>
+  {{- end }}
+  {{- with .Params.formatLabel }}
+  <span class="cover-placeholder-format">{{ . }}</span>
   {{- end }}
 </div>
 {{- end }}

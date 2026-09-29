@@ -1,0 +1,14 @@
+{{- /*
+  All editions of the given book page, lowest weight first. A page with a
+  `format` is one edition of the book whose folder contains it; editions of the
+  same book share that parent folder. A page without `format` is its own only edition.
+*/ -}}
+{{- $key := .Path }}
+{{- if .Params.format }}{{ $key = path.Dir .Path }}{{ end }}
+{{- $editions := slice }}
+{{- range (where site.RegularPages "Section" "books").ByWeight }}
+  {{- $k := .Path }}
+  {{- if .Params.format }}{{ $k = path.Dir .Path }}{{ end }}
+  {{- if eq $k $key }}{{ $editions = $editions | append . }}{{ end }}
+{{- end }}
+{{- return $editions }}

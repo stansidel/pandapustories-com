@@ -1,0 +1,14 @@
+{{- /*
+  Links to each edition of a book, shown only when there are several.
+  Call with (dict "page" . "current" true) on the book's own page to mark its edition.
+*/ -}}
+{{- $page := .page }}
+{{- $current := .current }}
+{{- $editions := partial "editions.html" $page }}
+{{- if gt (len $editions) 1 }}
+<ul class="formats" aria-label="Formats">
+  {{- range $editions }}
+  <li><a href="{{ .RelPermalink }}"{{ if and $current (eq . $page) }} aria-current="page"{{ end }}>{{ .Params.formatLabel | default .Params.format }}</a></li>
+  {{- end }}
+</ul>
+{{- end }}

@@ -5,8 +5,11 @@
 </header>
 
 <ol class="book-list">
+  {{- /* One entry per book: its first edition stands for the others. */}}
   {{- range .Pages.ByWeight }}
+  {{- if eq . (index (partial "editions.html" .) 0) }}
   <li>{{ partial "book-summary.html" . }}</li>
+  {{- end }}
   {{- end }}
 </ol>
 {{ end }}

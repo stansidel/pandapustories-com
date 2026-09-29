@@ -6,6 +6,10 @@
     {{- with .Params.subtitle }}
     <p class="subtitle">{{ . }}</p>
     {{- end }}
+    {{ partial "formats.html" (dict "page" . "current" true) }}
+    {{- with .Params.formatNote }}
+    <p class="format-note">{{ . }}</p>
+    {{- end }}
     {{- with .Params.status }}
     <p class="status">{{ . }}</p>
     {{- end }}

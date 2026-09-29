@@ -14,9 +14,13 @@ content/               ← words and pictures (edit these)
     index.md             About page
   books/
     _index.md            Books page intro
-    panda-pu-learns-to-draw/   one folder per book
-      index.md             the book's details and text
-      cover.jpg            its cover (add when ready)
+    panda-pu-learns-to-draw-p1/   one folder per book
+      read-aloud/            one folder per format (edition)
+        index.md               the edition's details and text
+        cover.jpg              its cover (add when ready)
+      picture-book/
+        index.md
+        cover.jpg
 assets/css/main.css      all styles (colours and fonts at the top)
 static/                  site icons, copied as-is
 layouts/                 HTML templates (rarely need touching)
@@ -57,6 +61,33 @@ To build the finished site into `public/` as GitHub does, run
    `cover.webp`), about 1000 px wide.
 5. To show it on the home page instead of the current book, set
    `featured: true` on it and `featured: false` on the old one.
+
+### Books in several formats
+
+When a book comes in more than one format, such as a read-aloud (text-only)
+edition and a picture book, each format gets its own page. Put each one in a
+subfolder of the book's folder:
+
+```
+content/books/panda-pu-learns-to-draw-p1/read-aloud/index.md
+content/books/panda-pu-learns-to-draw-p1/picture-book/index.md
+```
+
+The addresses become `/books/panda-pu-learns-to-draw-p1/read-aloud/` and so
+on. Each edition has its own cover, description, status, date and buy links,
+and these three extra fields:
+
+- `format`: a short name for the site, e.g. `"picture-book"`. Its presence is
+  what marks the page as one edition of the book in the folder above it.
+- `formatLabel`: the name readers see, e.g. `"Picture Book"`. It is shown as a
+  link to each edition, added to the browser-tab title, and printed on the
+  placeholder cover.
+- `formatNote`: one line on how this edition differs, shown on its page.
+
+The Books page lists each book once, using the edition with the lowest
+`weight`, with links to all its formats. Give the next book a weight higher
+than all of these editions. A book with only one format needs none of this:
+keep its `index.md` directly in the book's folder.
 
 ## 4. Replace images
 

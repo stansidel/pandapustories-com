@@ -3,6 +3,15 @@ title: "Template Book"
 subtitle: "Template Book Subtitle"
 draft: true
 
+# Only for a book that comes in several formats; delete these three lines otherwise.
+# Each format (edition) gets its own folder inside the book's folder, e.g.
+# books/<book>/read-aloud/index.md and books/<book>/picture-book/index.md.
+# format: a short name used by the site. formatLabel: shown to readers.
+# formatNote: one line on how this edition differs, shown on its page.
+format: "read-aloud"
+formatLabel: "Read-Aloud Edition"
+formatNote: "The complete story in text only, written to be read aloud."
+
 # Cover: put an image named cover.jpg (or .png/.webp) in this folder.
 # Until it exists, a placeholder is shown.
 
@@ -17,6 +26,7 @@ status: "Never coming"
 releaseDate: ""
 
 # Order in the book list (1 = first). Books with featured: true are shown on the home page.
+# Of a book's editions, the one with the lowest weight represents it in book lists.
 weight: 1
 featured: true
 
