@@ -8,8 +8,7 @@ subtitle: "Part One: Finding the Artist"
 # formatNote: one line on how this edition differs, shown on its page.
 format: "read-aloud"
 formatLabel: "Read-Aloud Edition"
-# TODO: check this wording.
-formatNote: "The complete story in text only, written to be read aloud."
+formatNote: "The story in text only, written to be read aloud."
 
 # Old addresses that should lead here.
 aliases:
@@ -19,9 +18,8 @@ aliases:
 # Cover: put an image named cover.jpg (or .png/.webp) in this folder.
 # Until it exists, a placeholder is shown.
 
-# TODO: replace with a one or two sentence description of the book.
 # It is shown in book lists and used for search engines and link previews.
-description: "The first book in the Panda Pu series. A fuller description is coming soon."
+description: "Panda Pu wants to draw a beautiful sunrise, but she doesn’t know how. With her friend Rabbit, she sets off into Town and finds someone who can teach them."
 
 # Anything you like, e.g. "Coming soon", "Available now".
 status: "Coming soon"
@@ -41,7 +39,10 @@ featured: true
 buy: []
 ---
 
-<!-- TODO: replace this text with a longer description of the book. -->
+One morning, Panda Pu sees a beautiful sunrise and wants to see it every day. How can she do that? Simple: draw a picture of the sunrise and hang it on the wall.
 
-*Panda Pu Learns to Draw* is the first book in the Panda Pu series. More about
-this story will be shared here closer to publication.
+There is one problem: she cannot draw. So Panda Pu decides to learn how to do it.
+
+Her friend Rabbit joins her on the adventure into Town. They look for a way to learn to draw and finally find someone who offers to help.
+
+Panda Pu Learns to Draw: Finding the Artist is a warm bedtime story with a few quirky jokes.
