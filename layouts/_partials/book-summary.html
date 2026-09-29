@@ -1,0 +1,15 @@
+{{- /* A book with its cover, used on the home page and the Books page. */ -}}
+<div class="book">
+  <a class="book-cover" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">{{ partial "cover.html" . }}</a>
+  <div class="book-text">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{- with .Params.subtitle }}
+    <p class="subtitle">{{ . }}</p>
+    {{- end }}
+    {{- with .Params.status }}
+    <p class="status">{{ . }}</p>
+    {{- end }}
+    <p>{{ .Description }}</p>
+    <p><a href="{{ .RelPermalink }}">More about this book</a></p>
+  </div>
+</div>

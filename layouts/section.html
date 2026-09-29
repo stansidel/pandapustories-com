@@ -1,0 +1,18 @@
+{{- /* A simple list for any future section (e.g. content/news/). Books have their own layout. */ -}}
+{{ define "main" }}
+<article class="page">
+  <h1>{{ .Title }}</h1>
+  <div class="prose">{{ .Content }}</div>
+
+  <ul class="page-list">
+    {{- range .Pages }}
+    <li>
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{- with .Description }}
+      <p>{{ . }}</p>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ul>
+</article>
+{{ end }}

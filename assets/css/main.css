@@ -1,0 +1,348 @@
+/* Panda Pu — all site styles.
+   Colours and fonts are set once here in :root; change them in one place. */
+
+:root {
+  --paper: #fbf7ee;       /* page background: warm cream */
+  --paper-deep: #f2e9d6;  /* cover placeholders */
+  --line: #e3d7bf;        /* hairlines */
+  --ink: #2f2c29;         /* main text: soft charcoal */
+  --pencil: #69645c;      /* quieter text: graphite */
+  --bamboo: #566b41;      /* links: muted bamboo green */
+  --sun: #d9a441;         /* small warm highlights */
+  --sun-pale: #f6e7c3;    /* status labels */
+
+  --body-font: "Literata", Georgia, "Times New Roman", serif;
+  --display-font: "Fraunces", Georgia, serif;
+
+  --measure: 36rem;       /* comfortable line length for reading */
+  --wide: 56rem;          /* overall page width */
+
+  color-scheme: light;
+}
+
+/* ---------- Basics ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--display-font);
+  font-weight: 500;
+  font-variation-settings: "SOFT" 100;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.2rem, 1.6rem + 2.5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.9rem); }
+
+p { margin: 0 0 1em; }
+
+img { display: block; max-width: 100%; height: auto; }
+
+a {
+  color: var(--bamboo);
+  text-decoration-line: underline;
+  text-decoration-color: var(--sun);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a:hover { text-decoration-color: currentColor; }
+
+:focus-visible {
+  outline: 2px solid var(--bamboo);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--sun-pale); }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--paper);
+  padding: 0.5rem 1rem;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Page frame ---------- */
+
+.site-header,
+main,
+.site-footer {
+  width: min(100% - 2.5rem, var(--wide));
+  margin-inline: auto;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  font-family: var(--display-font);
+  font-variation-settings: "SOFT" 100;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.site-header nav a {
+  color: var(--pencil);
+  text-decoration: none;
+}
+.site-header nav a:hover { color: var(--ink); }
+.site-header nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline 2px var(--sun);
+  text-underline-offset: 0.4em;
+}
+
+.site-footer {
+  margin-top: 5rem;
+  padding-block: 3rem 2.5rem;
+  text-align: center;
+  color: var(--pencil);
+  font-size: 0.9rem;
+}
+
+/* A short pencil line with a small dot of sunlight, used as a quiet ornament. */
+.divider {
+  position: relative;
+  width: 5rem;
+  height: 1px;
+  margin: 0 auto 2rem;
+  background: var(--line);
+}
+.divider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  border-radius: 50%;
+  background: var(--sun);
+}
+
+.illustration,
+.footer-illustration {
+  margin: 0 auto 1.5rem;
+  max-width: 9rem;
+}
+.footer-illustration { max-width: 6rem; }
+
+/* ---------- Text ---------- */
+
+.prose { max-width: var(--measure); }
+.prose > :last-child { margin-bottom: 0; }
+
+.page {
+  max-width: var(--measure);
+  margin: 4rem auto 0;
+}
+
+.page-header {
+  max-width: var(--measure);
+  margin: 4rem 0 1rem;
+}
+
+.page-list {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+.page-list li {
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--pencil);
+  font-size: 1.1em;
+}
+
+.meta { color: var(--pencil); }
+
+.status {
+  display: inline-block;
+  padding: 0.15rem 0.75rem;
+  border-radius: 999px;
+  background: var(--sun-pale);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Home page ---------- */
+
+.intro {
+  margin: 4.5rem auto 4rem;
+  text-align: center;
+}
+
+.intro .title {
+  font-size: clamp(3.5rem, 2rem + 8vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3em;
+}
+
+.title-art img {
+  margin-inline: auto;
+  max-width: min(100%, 28rem);
+}
+
+.tagline {
+  font-style: italic;
+  color: var(--pencil);
+  font-size: 1.2em;
+  margin-bottom: 2.5rem;
+}
+
+.intro .prose { margin-inline: auto; }
+
+.featured { margin-block: 4rem; }
+
+/* "The first book", with a hairline either side */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  color: var(--pencil);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.coming {
+  max-width: var(--measure);
+  margin: 5rem auto 0;
+  text-align: center;
+}
+.coming strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--display-font);
+  font-variation-settings: "SOFT" 100;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+/* ---------- Books ---------- */
+
+.book {
+  display: grid;
+  gap: 2rem;
+}
+
+.book-cover {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  margin-inline: auto;
+  text-decoration: none;
+}
+
+.book-text h1 a,
+.book-text h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+.book-text h2 a:hover { color: var(--bamboo); }
+
+@media (min-width: 42rem) {
+  .book {
+    grid-template-columns: 15rem 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .book-page { align-items: start; }
+  .book-cover { margin-inline: 0; }
+}
+
+/* The cover itself, with a soft shadow like a book resting on paper. */
+.cover {
+  width: 100%;
+  border-radius: 2px 5px 5px 2px;
+  box-shadow:
+    0 1px 2px rgb(70 50 20 / 0.08),
+    0 10px 24px -10px rgb(70 50 20 / 0.25);
+}
+
+/* Shown until a cover image is added. */
+.cover-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  aspect-ratio: 4 / 5;
+  padding: 1.75rem;
+  background: var(--paper-deep);
+  outline: 1px solid var(--line);
+  outline-offset: -0.75rem;
+  text-align: center;
+  color: var(--pencil);
+}
+.cover-placeholder-title {
+  font-family: var(--display-font);
+  font-variation-settings: "SOFT" 100;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.cover-placeholder-subtitle {
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.book-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+.book-list li {
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.book-page { margin-top: 4rem; }
+.book-page h2 { margin-top: 2rem; font-size: 1.3rem; }
+
+.buy-links { padding-left: 1.2rem; }
+
+.back { margin-top: 2.5rem; }

@@ -1,0 +1,32 @@
+{{ define "main" }}
+<article class="book book-page">
+  <div class="book-cover">{{ partial "cover.html" . }}</div>
+  <div class="book-text">
+    <h1>{{ .Title }}</h1>
+    {{- with .Params.subtitle }}
+    <p class="subtitle">{{ . }}</p>
+    {{- end }}
+    {{- with .Params.status }}
+    <p class="status">{{ . }}</p>
+    {{- end }}
+    {{- with .Params.releaseDate }}
+    <p class="meta">Publication date: {{ time.Format "2 January 2006" . }}</p>
+    {{- end }}
+
+    <div class="prose">
+      {{- with .Content }}{{ . }}{{ else }}<p>{{ .Description }}</p>{{ end }}
+    </div>
+
+    {{- with .Params.buy }}
+    <h2>Where to buy</h2>
+    <ul class="buy-links">
+      {{- range . }}
+      <li><a href="{{ .url }}" rel="noopener">{{ .name }}</a></li>
+      {{- end }}
+    </ul>
+    {{- end }}
+
+    <p class="back"><a href="{{ .Parent.RelPermalink }}">← All books</a></p>
+  </div>
+</article>
+{{ end }}

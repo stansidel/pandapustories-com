@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- $title := cond .IsHome site.Title (printf "%s · %s" .Title site.Title) }}
+  {{- $description := .Description | default site.Params.description }}
+  <title>{{ $title }}</title>
+  <meta name="description" content="{{ $description }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  <meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
+  <meta property="og:site_name" content="{{ site.Title }}">
+  <meta property="og:title" content="{{ $title }}">
+  <meta property="og:description" content="{{ $description }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{- with or (resources.Get .Params.cover) (resources.Get site.Params.ogImage) }}
+  <meta property="og:image" content="{{ .Permalink }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {{- end }}
+
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="any">
+  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&family=Literata:ital,opsz,wght@0,7..72,400..600;1,7..72,400&display=swap">
+  {{- $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="wordmark" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+    <nav aria-label="Main">
+      {{- range site.Menus.main }}
+      <a href="{{ .URL }}"{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+    </nav>
+  </header>
+
+  <main id="main">
+    {{- block "main" . }}{{ end }}
+  </main>
+
+  <footer class="site-footer">
+    {{- with resources.Get site.Params.footerIllustration }}
+    <img class="footer-illustration" src="{{ .RelPermalink }}" alt="" width="{{ .Width }}" height="{{ .Height }}">
+    {{- else }}
+    <div class="divider" aria-hidden="true"></div>
+    {{- end }}
+    <p>© {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
+  </footer>
+</body>
+</html>

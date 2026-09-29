@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="intro">
+  {{- with resources.Get site.Params.logo }}
+  <h1 class="title-art"><img src="{{ .RelPermalink }}" alt="{{ site.Title }}" width="{{ .Width }}" height="{{ .Height }}"></h1>
+  {{- else }}
+  <h1 class="title">{{ site.Title }}</h1>
+  {{- end }}
+  {{- with .Params.tagline }}
+  <p class="tagline">{{ . }}</p>
+  {{- end }}
+  <div class="prose">{{ .Content }}</div>
+</section>
+
+{{- /* Show the book marked "featured: true", or the first book if none is. */}}
+{{- $books := where site.RegularPages "Section" "books" }}
+{{- $featured := where $books "Params.featured" true | default $books }}
+{{- range first 1 $featured.ByWeight }}
+<section class="featured">
+  <p class="eyebrow">{{ $.Params.featuredHeading | default "Featured book" }}</p>
+  {{ partial "book-summary.html" . }}
+</section>
+{{- end }}
+
+<section class="coming">
+  {{- with resources.Get .Params.comingSoonIllustration }}
+  <img class="illustration" src="{{ .RelPermalink }}" alt="" width="{{ .Width }}" height="{{ .Height }}">
+  {{- else }}
+  <div class="divider" aria-hidden="true"></div>
+  {{- end }}
+  {{ .RenderString (dict "display" "block") .Params.comingSoon }}
+  {{- with site.GetPage "/books" }}
+  <p><a href="{{ .RelPermalink }}">See all the books</a></p>
+  {{- end }}
+</section>
+{{ end }}

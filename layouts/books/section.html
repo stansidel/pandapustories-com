@@ -1,0 +1,12 @@
+{{ define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  <div class="prose">{{ .Content }}</div>
+</header>
+
+<ol class="book-list">
+  {{- range .Pages.ByWeight }}
+  <li>{{ partial "book-summary.html" . }}</li>
+  {{- end }}
+</ol>
+{{ end }}
