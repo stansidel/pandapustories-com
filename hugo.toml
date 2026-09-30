@@ -1,6 +1,6 @@
 # Your site's address. If the domain ever changes, change it here
 # and in GitHub → Settings → Pages → Custom domain.
-baseURL = "https://pandapustories.com/"
+baseURL = "https://www.pandapustories.com/"
 
 title = "Panda Pu"
 locale = "en-GB"

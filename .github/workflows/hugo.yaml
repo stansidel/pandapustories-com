@@ -54,14 +54,18 @@ jobs:
           restore-keys: hugo-
 
       # The site address comes from GitHub's Pages settings, so it always
-      # matches your custom domain once that is set up.
+      # matches your custom domain once that is set up. GitHub reports it as
+      # http:// when "Enforce HTTPS" is off (e.g. behind Cloudflare), so force
+      # https:// or link previews will point at insecure image addresses.
       - name: Build
+        env:
+          BASE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
           hugo version
           hugo build \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --baseURL "${BASE_URL/#http:/https:}/" \
             --cacheDir "${{ runner.temp }}/.cache/hugo"
 
       - name: Cache save

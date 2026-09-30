@@ -1,7 +1,6 @@
 ---
 title: "About"
 description: "About the Panda Pu series of gentle stories for young children."
-# TODO: the second paragraph below is placeholder copy; rewrite it in your own words.
 menus:
   main:
     weight: 3
