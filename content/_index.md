@@ -1,7 +1,6 @@
 ---
 title: "Panda Pu"
-# TODO: replace the placeholder tagline, description and introduction below.
-tagline: "Gentle stories for curious little ones"
+tagline: "Gentle stories with quirky humor"
 description: "Panda Pu is a series of gentle stories for young children about curiosity, friendship, learning and discovering the world."
 
 featuredHeading: "The first book"
@@ -19,8 +18,8 @@ menus:
     weight: 1
 ---
 
-Panda Pu is a series of gentle stories for children of around four to seven,
+Panda Pu is a series of gentle stories for children aged around five to ten,
 and for the grown-ups who read with them.
 
-The stories are about curiosity, friendship, learning, and discovering the
-world, one small step at a time.
+The stories were first told by a father to his two children before bed, to make them
+laugh, imagine and, of course, learn something new.
