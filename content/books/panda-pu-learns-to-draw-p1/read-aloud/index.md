@@ -22,7 +22,7 @@ aliases:
 description: "Panda Pu wants to draw a beautiful sunrise, but she doesn’t know how. With her friend Rabbit, she sets off into Town and finds someone who can teach them."
 
 # Anything you like, e.g. "Coming soon", "Available now".
-status: "Coming soon"
+status: "Available now"
 
 # Publication date as YYYY-MM-DD. Leave empty ("") until you know it.
 releaseDate: ""
