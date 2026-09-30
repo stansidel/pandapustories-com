@@ -34,9 +34,13 @@ featured: true
 
 # Where to buy. Leave as [] until the book is available, or add entries like:
 # buy:
+#   - name: "Amazon"
+#     asin: "B0XXXXXXXX"   # readers choose their Amazon store; see data/amazon.yaml
 #   - name: "Your local bookshop"
 #     url: "https://example.com/"
-buy: []
+buy: 
+  - name: "Amazon"
+    asin: "B0HLJ1H9X5"
 ---
 
 One morning, Panda Pu sees a beautiful sunrise and wants to see it every day. How can she do that? Simple: draw a picture of the sunrise and hang it on the wall.

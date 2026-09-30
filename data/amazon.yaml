@@ -1,0 +1,23 @@
+# Amazon stores offered by "Where to buy" entries that have an `asin`.
+# The book page links to https://www.<domain>/dp/<asin>.
+
+# Store the link goes to when the reader's browser runs no JavaScript.
+default: "amazon.com"
+
+# Stores the reader can choose from, in the order shown. To add one, copy a line.
+# These are the Kindle stores; Amazon also sells paperbacks on e.g.
+# amazon.pl, amazon.se and amazon.com.be if you want to add those.
+stores:
+  - { name: "United Kingdom", domain: "amazon.co.uk" }
+  - { name: "United States", domain: "amazon.com" }
+  - { name: "Canada", domain: "amazon.ca" }
+  - { name: "Australia", domain: "amazon.com.au" }
+  - { name: "Germany", domain: "amazon.de" }
+  - { name: "France", domain: "amazon.fr" }
+  - { name: "Italy", domain: "amazon.it" }
+  - { name: "Spain", domain: "amazon.es" }
+  - { name: "Netherlands", domain: "amazon.nl" }
+  - { name: "Japan", domain: "amazon.co.jp" }
+  - { name: "India", domain: "amazon.in" }
+  - { name: "Brazil", domain: "amazon.com.br" }
+  - { name: "Mexico", domain: "amazon.com.mx" }

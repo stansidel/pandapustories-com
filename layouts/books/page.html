@@ -25,7 +25,11 @@
     <h2>Where to buy</h2>
     <ul class="buy-links">
       {{- range . }}
+      {{- if .asin }}
+      <li>{{ partial "amazon-link.html" . }}</li>
+      {{- else }}
       <li><a href="{{ .url }}" rel="noopener">{{ .name }}</a></li>
+      {{- end }}
       {{- end }}
     </ul>
     {{- end }}
@@ -33,4 +37,7 @@
     <p class="back"><a href="{{ .Parent.RelPermalink }}">← All books</a></p>
   </div>
 </article>
+{{- range .Params.buy }}
+  {{- if .asin }}{{ partial "amazon-store-picker.html" . }}{{ break }}{{ end }}
+{{- end }}
 {{ end }}

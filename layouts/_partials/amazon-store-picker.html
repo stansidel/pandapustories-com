@@ -1,0 +1,18 @@
+{{- /*
+  The "Choose your Amazon store" dialog, added once to pages with an Amazon entry.
+  Choosing a store closes the dialog with that store's domain as its return value.
+*/ -}}
+<dialog class="store-picker" id="amazon-store-picker" aria-labelledby="amazon-store-picker-title" aria-describedby="amazon-store-picker-note">
+  <form method="dialog">
+    <h2 id="amazon-store-picker-title">Choose your Amazon store</h2>
+    <p class="store-picker-note" id="amazon-store-picker-note">Your choice is remembered on this device.</p>
+    <ul class="store-list">
+      {{- range hugo.Data.amazon.stores }}
+      <li><button type="submit" name="store" value="{{ .domain }}">{{ .name }} <span class="store-domain">{{ .domain }}</span></button></li>
+      {{- end }}
+    </ul>
+    <button type="submit" value="" class="store-picker-cancel">Cancel</button>
+  </form>
+</dialog>
+{{- $js := resources.Get "js/amazon-store.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

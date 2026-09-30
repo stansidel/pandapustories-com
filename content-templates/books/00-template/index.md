@@ -32,6 +32,8 @@ featured: true
 
 # Where to buy. Leave as [] until the book is available, or add entries like:
 # buy:
+#   - name: "Amazon"
+#     asin: "B0XXXXXXXX"   # readers choose their Amazon store; see data/amazon.yaml
 #   - name: "Your local bookshop"
 #     url: "https://example.com/"
 buy: []

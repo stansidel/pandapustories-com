@@ -1,0 +1,6 @@
+{{- /*
+  A "Where to buy" entry with an `asin`. Links to the default store in
+  data/amazon.yaml; assets/js/amazon-store.js switches it to the reader's own store.
+*/ -}}
+<a class="amazon-link" href="https://www.{{ hugo.Data.amazon.default }}/dp/{{ .asin }}" data-asin="{{ .asin }}" rel="noopener">{{ .name | default "Amazon" }}</a>
+<span class="amazon-store" hidden><span class="amazon-store-name"></span> · <button type="button" class="link-button amazon-store-change" aria-label="Change Amazon store">Change</button></span>

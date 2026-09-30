@@ -378,4 +378,101 @@ main,
 
 .buy-links { padding-left: 1.2rem; }
 
+/* ---------- Amazon store ---------- */
+
+/* "amazon.co.uk · Change" under an Amazon link, once a store is chosen. */
+.amazon-store:not([hidden]) {
+  display: block;
+  color: var(--pencil);
+  font-size: 0.85rem;
+}
+
+/* A button that looks like a link. */
+.link-button {
+  display: inline-block;
+  padding: 0.2rem 0.1rem;
+  border: 0;
+  background: none;
+  color: var(--bamboo);
+  font: inherit;
+  text-decoration: underline 1px var(--sun);
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.link-button:hover { text-decoration-color: currentColor; }
+
+.store-picker {
+  width: min(100% - 2rem, 24rem);
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 16px 40px -12px rgb(70 50 20 / 0.35);
+}
+.store-picker::backdrop { background: rgb(47 44 41 / 0.35); }
+
+/* Heading and Cancel stay put; the list of stores scrolls on short screens. */
+.store-picker form {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 2rem - 2px);
+  max-height: calc(100dvh - 2rem - 2px);
+  padding: 1.5rem;
+}
+.store-picker h2 { margin: 0 0 0.25rem; font-size: 1.3rem; }
+
+.store-picker-note {
+  margin: 0 0 1rem;
+  color: var(--pencil);
+  font-size: 0.85rem;
+}
+
+.store-list {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.store-list li { border-bottom: 1px solid var(--line); }
+.store-list button {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.store-list button:hover { color: var(--bamboo); }
+.store-list button[aria-current="true"] { background: var(--sun-pale); }
+.store-list :focus-visible { outline-offset: -2px; }
+.store-domain { color: var(--pencil); font-size: 0.85rem; }
+
+/* Same pill as the format links. */
+.store-picker-cancel {
+  align-self: flex-start;
+  padding: 0.35rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: none;
+  color: var(--pencil);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.store-picker-cancel:hover { color: var(--bamboo); border-color: var(--bamboo); }
+
 .back { margin-top: 2.5rem; }

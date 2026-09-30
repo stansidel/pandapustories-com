@@ -62,6 +62,25 @@ To build the finished site into `public/` as GitHub does, run
 5. To show it on the home page instead of the current book, set
    `featured: true` on it and `featured: false` on the old one.
 
+### Buy links
+
+Each `buy` entry is either an ordinary link or an Amazon book:
+
+```yaml
+buy:
+  - name: "Amazon"
+    asin: "B0HLJ1H9X5"
+  - name: "Another retailer"
+    url: "https://example.com/book"
+```
+
+An entry with `asin` needs no URL. The first time readers click it, they
+choose their Amazon store, and it goes to `https://www.<store>/dp/<asin>`. The
+choice is remembered on their device for every book on the site, and a small
+"Change" link lets them pick again. `name` is the link text (default
+"Amazon"). The list of stores, and the store used when JavaScript is off
+(amazon.com), are in `data/amazon.yaml`.
+
 ### Books in several formats
 
 When a book comes in more than one format, such as a read-aloud (text-only)
