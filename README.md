@@ -108,6 +108,20 @@ The Books page lists each book once, using the edition with the lowest
 than all of these editions. A book with only one format needs none of this:
 keep its `index.md` directly in the book's folder.
 
+### Short links
+
+To give any page a short address for posts, add it to the page's `aliases`
+in the front matter:
+
+```yaml
+aliases:
+  - /bPPL2Dp1RA/
+```
+
+`https://www.pandapustories.com/bPPL2Dp1RA` then forwards to the page. Short
+links are case-sensitive: `/bppl2dp1ra` will not work, so all-lowercase links
+are easier for people who type them in. Each short link must be unique.
+
 ## 4. Replace images
 
 Images sit next to the page that uses them and are found by their name. Any

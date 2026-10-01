@@ -10,10 +10,11 @@ format: "read-aloud"
 formatLabel: "Read-Aloud Edition"
 formatNote: "The story in text only, written to be read aloud."
 
-# Old addresses that should lead here.
+# Old addresses and short links that should lead here.
 aliases:
   - /books/panda-pu-learns-to-draw/
   - /books/panda-pu-learns-to-draw-p1/
+  - /bPPL2Dp1RA/
 
 # Cover: put an image named cover.jpg (or .png/.webp) in this folder.
 # Until it exists, a placeholder is shown.
