@@ -1,4 +1,6 @@
 {{ define "main" }}
+{{- /* The short links are built once, alongside the home page. */}}
+{{- partial "short-links.html" . }}
 <section class="intro">
   {{- with .Resources.GetMatch "images/logo.*" }}
   <h1 class="title-art"><img src="{{ .RelPermalink }}" alt="{{ site.Title }}" width="{{ .Width }}" height="{{ .Height }}"></h1>

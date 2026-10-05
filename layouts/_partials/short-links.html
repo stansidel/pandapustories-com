@@ -1,0 +1,50 @@
+{{- /*
+  Publishes the short links in data/links.yaml. Each code becomes a page at
+  /<code>/, plus /<lowercase code>/, that forwards to its target with the
+  tracking parameters added.
+*/ -}}
+{{- range $code, $link := hugo.Data.links }}
+  {{- $target := "" }}
+  {{- $canonical := "" }}
+  {{- with $link.page }}
+    {{- with site.GetPage . }}
+      {{- $target = .Permalink }}
+      {{- $canonical = .Permalink }}
+    {{- else }}
+      {{- errorf "data/links.yaml: %s: there is no page at %q" $code . }}
+    {{- end }}
+  {{- else with $link.url }}
+    {{- $target = . }}
+    {{- $canonical = . }}
+  {{- else }}
+    {{- errorf "data/links.yaml: %s needs a page or a url" $code }}
+  {{- end }}
+  {{- range $key, $_ := $link }}
+    {{- if not (in (slice "page" "url" "source" "medium" "campaign" "params") $key) }}
+      {{- errorf "data/links.yaml: %s: unknown setting %q" $code $key }}
+    {{- end }}
+  {{- end }}
+  {{- with site.GetPage (printf "/%s" $code) }}
+    {{- errorf "data/links.yaml: %s clashes with the page %s" $code .RelPermalink }}
+  {{- end }}
+
+  {{- $query := dict }}
+  {{- with $link.params }}
+    {{- if reflect.IsMap . }}
+      {{- $query = . }}
+    {{- else }}
+      {{- errorf "data/links.yaml: %s: params must be a list of name: value lines" $code }}
+    {{- end }}
+  {{- end }}
+  {{- with $link.source }}{{ $query = merge $query (dict "utm_source" .) }}{{ end }}
+  {{- with $link.medium }}{{ $query = merge $query (dict "utm_medium" .) }}{{ end }}
+  {{- with $link.campaign }}{{ $query = merge $query (dict "utm_campaign" .) }}{{ end }}
+  {{- with $query }}
+    {{- $target = printf "%s%s%s" $target (cond (strings.Contains $target "?") "&" "?") (querify .) }}
+  {{- end }}
+
+  {{- $html := partial "short-link-page.html" (dict "target" $target "canonical" $canonical) }}
+  {{- range uniq (slice $code (lower $code)) }}
+    {{- (resources.FromString (printf "%s/index.html" .) $html).Publish }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,23 @@
+# Short links, e.g. https://pandapu.link/L2DP1RA01 (or www.pandapustories.com/L2DP1RA01).
+#
+# Each entry is a code, then where it leads:
+#   page:     a page on this site, as its address (the build fails if it doesn't exist)
+#   url:      or a full address anywhere else, instead of page
+#   source:   where the link was shared, e.g. paperback-book, instagram (utm_source)
+#   campaign: optional, e.g. launch (utm_campaign)
+#   medium:   optional, e.g. print, social, email (utm_medium)
+#   params:   optional, any other parameters to add, one per line, e.g.
+#               params:
+#                 utm_content: back-cover
+#                 edition: 2
+#
+# GoatCounter only shows source and campaign; the rest are just added to the
+# address.
+#
+# Codes are matched exactly, plus an all-lowercase copy for people who type
+# them in. Once a link is printed or posted, never remove or reuse its code.
+
+L2DP1RA01:
+  page: /books/panda-pu-learns-to-draw-p1/read-aloud/
+  source: paperback-book
+  campaign: something_else

@@ -13,6 +13,10 @@ enableRobotsTXT = true
   # Default description for search engines and link previews.
   description = "Panda Pu is a series of gentle stories for young children about curiosity, friendship, learning and discovering the world."
 
+  # Visitor statistics: your GoatCounter code, the "pandapu" in
+  # pandapu.goatcounter.com. Leave empty ("") to turn statistics off.
+  goatcounter = "pandapu"
+
 # Recommended by Hugo for GitHub Pages builds.
 [caches.images]
   dir = ":cacheDir/images"

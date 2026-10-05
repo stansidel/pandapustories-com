@@ -31,6 +31,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,100&family=Literata:ital,opsz,wght@0,7..72,400..600;1,7..72,400&display=swap">
   {{- $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{- /* Visitor statistics, only on the published site (not with hugo server). */}}
+  {{- with and hugo.IsProduction site.Params.goatcounter }}
+  <script data-goatcounter="https://{{ . }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  {{- end }}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

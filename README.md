@@ -122,6 +122,42 @@ aliases:
 links are case-sensitive: `/bppl2dp1ra` will not work, so all-lowercase links
 are easier for people who type them in. Each short link must be unique.
 
+### Tracked short links
+
+To see where visitors come from, add a short link to `data/links.yaml`
+instead:
+
+```yaml
+L2DP1RA01:
+  page: /books/panda-pu-learns-to-draw-p1/read-aloud/
+  source: paperback-book
+  campaign: launch
+```
+
+`pandapu.link/L2DP1RA01` then leads to that page with
+`?utm_source=paperback-book&utm_campaign=launch` added, and the visit shows up
+under that source and campaign in GoatCounter. To add any other parameters,
+list them under `params`:
+
+```yaml
+  params:
+    utm_content: back-cover
+    edition: 2
+```
+
+GoatCounter only reports `source` and `campaign`; other parameters are added
+to the address but don't appear in its statistics. These links work in both upper
+and lower case. The file's comments list every option. The build stops with an
+error if a link points at a page that doesn't exist. Once a link has been
+printed or posted, never remove or reuse its code.
+
+### Visitor statistics
+
+Statistics come from [GoatCounter](https://www.goatcounter.com), which uses
+no cookies, so the site needs no cookie banner. Your GoatCounter code is
+`goatcounter` in `hugo.toml`. Visits are only counted on the published site,
+not with `hugo server`.
+
 ## 4. Replace images
 
 Images sit next to the page that uses them and are found by their name. Any
