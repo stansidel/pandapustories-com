@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{- $name := .Title }}
   {{- with .Params.formatLabel }}{{ $name = printf "%s – %s" $.Title . }}{{ end }}
-  {{- $title := cond .IsHome site.Title (printf "%s · %s" $name site.Title) }}
+  {{- if .IsHome }}{{ $name = site.Title }}{{ end }}
+  {{- /* Mention the site name once: only add it when the page title lacks it. */}}
+  {{- $hasSiteName := strings.Contains $name site.Title }}
+  {{- $title := cond $hasSiteName $name (printf "%s · %s" $name site.Title) }}
   {{- $description := .Description | default site.Params.description }}
   <title>{{ $title }}</title>
   <meta name="description" content="{{ $description }}">
   <link rel="canonical" href="{{ .Permalink }}">
 
   <meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
+  {{- if not $hasSiteName }}
   <meta property="og:site_name" content="{{ site.Title }}">
-  <meta property="og:title" content="{{ $title }}">
+  {{- end }}
+  <meta property="og:title" content="{{ $name }}">
   <meta property="og:description" content="{{ $description }}">
   <meta property="og:url" content="{{ .Permalink }}">
   {{- /* Link-preview picture: this page's og-image.*, else its cover.*, else content/images/og-image.* */}}
